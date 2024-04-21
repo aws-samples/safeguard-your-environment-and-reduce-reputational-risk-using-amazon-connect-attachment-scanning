@@ -1,4 +1,4 @@
-# Integrate Amazon Connect with attachment scanning solutions 
+# Safeguard your environment and reduce reputational risk using Amazon Connect attachment scanning
 
 ## Introduction
 This project deploys an attachment scanning solution based on Amazon Rekognition to identify inappropriate, unwanted, or offensive content in images based on general or business-specific standards and practices.
