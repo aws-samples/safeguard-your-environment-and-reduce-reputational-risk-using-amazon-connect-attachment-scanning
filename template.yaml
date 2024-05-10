@@ -8,7 +8,10 @@ Globals: # https://docs.aws.amazon.com/serverless-application-model/latest/devel
     Timeout: 5
     MemorySize: 128
     Runtime: python3.11
-
+Parameters:
+  ConnectBucketName:
+    Description: Amazon Connect attachments bucket name
+    Type: String
 Resources:
   LambdaRole:
     Type: AWS::IAM::Role
@@ -24,8 +27,31 @@ Resources:
         Version: 2012-10-17
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSLambdaExecute
-        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
-        - arn:aws:iam::aws:policy/AmazonRekognitionFullAccess
+      Policies:
+        - PolicyName: RekognitionModerateContentPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - rekognition:DetectModerationLabels
+                Resource: '*'
+        - PolicyName: S3ReadAccessPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:Get*
+                  - s3:List*
+                  - s3:Describe*,
+                  - s3-object-lambda:Get*
+                  - s3-object-lambda:List*
+                Resource: !Join 
+                  - ''
+                  - - 'arn:aws:s3:::'
+                    - !Ref ConnectBucketName
+                    - /*
   ConnectAttachmentScanner:
     Type: AWS::Serverless::Function     # More info about Function Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
     Properties:
@@ -47,5 +73,3 @@ Resources:
           LOG_LEVEL: INFO
       Tags:
         LambdaPowertools: python
-
-
