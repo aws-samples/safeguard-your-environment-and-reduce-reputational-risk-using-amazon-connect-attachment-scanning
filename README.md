@@ -38,7 +38,7 @@ sam build
 ```
 4.	Deploy the solution
 ```
-sam deploy
+sam deploy --g
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ After the SAM application is deployed, please follow the steps outlined in blog 
 
 ## Useful commands
 * `sam build`  creates .aws-sam directory that structures your application
-* `sam deploy` deploys serverless application to the AWS Cloud
+* `sam deploy --g` deploys serverless application to the AWS Cloud
 
 ## Security
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
