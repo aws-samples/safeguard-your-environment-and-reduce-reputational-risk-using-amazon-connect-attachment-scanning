@@ -43,7 +43,7 @@ sam deploy --g
 ```
 
 ## Usage
-After the SAM application is deployed, please follow the steps outlined in blog post [**Safeguard your environment and reduce reputational risk using Amazon Connect attachment scanning**]([https://insert_link_to_blog_post](https://aws-blogs-prod.amazon.com/contact-center/safeguard-your-environment-and-reduce-reputational-risk-using-amazon-connect-attachment-scanning/))
+After the SAM application is deployed, please follow the steps outlined in blog post [**Safeguard your environment and reduce reputational risk using Amazon Connect attachment scanning**](https://aws-blogs-prod.amazon.com/contact-center/safeguard-your-environment-and-reduce-reputational-risk-using-amazon-connect-attachment-scanning)
 
 ## Useful commands
 * `sam build`  creates .aws-sam directory that structures your application
